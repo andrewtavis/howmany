@@ -109,7 +109,7 @@ python src/howmany/in.py
 
 # To-Do [`⇧`](#contents)
 
-Please see the [contribution guidelines](https://github.com/andrewtavis/howmany/blob/main/.github/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
+Please see the [contribution guidelines](https://github.com/andrewtavis/howmany/blob/main/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
 - WIP
 
