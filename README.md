@@ -56,7 +56,7 @@ import howmany
 
 The development environment for howmany can be installed via the following steps:
 
-1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the [howmany repo](https://github.com/scribe-org/howmany), clone your fork, and configure the remotes:
+1. [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the [howmany repo](https://github.com/andrewtavis/howmany), clone your fork, and configure the remotes:
 
 > [!NOTE]
 >
@@ -81,7 +81,7 @@ git clone https://github.com/<your-username>/howmany.git
 # Navigate to the newly cloned directory.
 cd howmany
 # Assign the original repo to a remote called "upstream".
-git remote add upstream https://github.com/scribe-org/Scibe-Data.git
+git remote add upstream https://github.com/andrewtavis/howmany.git
 ```
 
 - Now, if you run `git remote -v` you should see two remote repositories named:
