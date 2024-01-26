@@ -8,7 +8,7 @@ howmany tries to follow [semantic versioning](https://semver.org/), a MAJOR.MINO
 
 # howmany 0.1.0
 
-- Main function `howmany.compare()` has Wikidata QIDs and properties passed to it and returns a dictionary of labels and the ratio between the property values.
+- The main function `howmany.compare()` has Wikidata QIDs and properties passed to it and returns a dictionary of labels and the ratio between the property values.
 - Labels can be returned in any language given the `iso` argument of `howmany.compare()`.
 - Allows for comparing area that are in square kilometers as well as meters via length and width properties.
 - Basic unit and dimension conversions have been added.
