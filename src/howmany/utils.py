@@ -154,7 +154,7 @@ def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
         The amount for the given Wikidata QID data and property identifier.
     """
     error_msg = (
-        f"The PID '{pid}' does not exist on the QID '{qid}' and cannot be resolved."
+        f"The PID '{pid}' doesn't exist on the QID '{qid}' and cannot be resolved."
     )
 
     if unit:
