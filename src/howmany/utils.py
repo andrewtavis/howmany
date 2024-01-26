@@ -106,7 +106,7 @@ def _get_ent_label(qid: str, iso: str = "en"):
 
     except KeyError as e:
         raise KeyError(
-            f"The QID {qid} does't have a label with the ISO code {iso}."
+            f"The QID '{qid}' does't have a label with the ISO code '{iso}'."
         ) from e
 
 
@@ -169,7 +169,7 @@ def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
 
             except KeyError as e1:
                 raise KeyError(
-                    f"Wikidata doesn't have units for the needed properties of {qid}."
+                    f"Wikidata doesn't have units for the needed properties of '{qid}'."
                 ) from e1
 
         unit_ratio = unit_ratio_dict[unit][value_unit]
