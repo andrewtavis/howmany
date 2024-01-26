@@ -6,5 +6,3 @@ dependencies:
   - pytest-cov>=4.1.0
   - python=3.10
   - tqdm>=4.65.0
-  - pip:
-      - wikidata>=0.7.0

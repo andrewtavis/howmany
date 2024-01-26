@@ -13,12 +13,12 @@
 
 ## Wikidata powered comparisons
 
-**howmany** is a Python package that uses [Wikidata](https://www.wikidata.org/) entity properties to easily compare the dimensions of any object. You can use it to find the answers to questions including:
+**howmany** is a Python package that uses [Wikidata](https://www.wikidata.org/) entity properties to easily compare the dimensions of any object. The package leverages the [Wikidata REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) to easily derive amount values and then compare them given unit ratios.
 
-<!-- - How many olympic swimming pools worth of water would fit in the Pacific Ocean?
-- How many Eiffel Towers could you stack between the Earth to the Moon? -->
+You can use howmany to find the answers to questions including:
 
 - How many association football pitches would fit inside Germany?
+- How many Germanys would fit inside an association football pitch?
 - And eventually anything else that [Wikidata](https://www.wikidata.org/) has dimensions for!
 
 <a id="contents"></a>
@@ -98,11 +98,37 @@ git remote add upstream https://github.com/andrewtavis/howmany.git
 
 # Examples [`⇧`](#contents)
 
-As of now howmany does one thing:
+See the [examples directory](https://github.com/andrewtavis/howmany/tree/main/examples) for example Jupyter notebooks.
 
-```bash
-python src/howmany/in.py
+A basic howmany workflow is:
+
+```py
+import howmany
+from howmany.utils import float_to_str
+
+soccer_fields_in_germany_dict = howmany.compare(
+    containers="Q183", entities="Q8524", pid="P2046", iso="en"
+)
+
+for k in soccer_fields_in_germany_dict.keys():
+    amount = round(soccer_fields_in_germany_dict[k]["amount"], 2)
+    print(
+        f"You could fit {amount:,} {soccer_fields_in_germany_dict[k]['entity']}es inside {k}."
+    )
+
 # You could fit 50,453,300.88 association football pitches inside Germany.
+
+germanies_in_soccer_fields_dict = howmany.compare(
+    containers="Q8524", entities="Q183", pid="P2046", iso="en"
+)
+
+for k in germanies_in_soccer_fields_dict.keys():
+    amount = float_to_str(germanies_in_soccer_fields_dict[k]["amount"])
+    print(
+        f"You could fit {amount} {germanies_in_soccer_fields_dict[k]['entity']}s inside an {k}."
+    )
+
+# You could fit 0.000000019820308731475912 Germanys inside an association football pitch.
 ```
 
 <a id="to-do"></a>
@@ -111,7 +137,7 @@ python src/howmany/in.py
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/howmany/blob/main/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
-- WIP
+- Work to be done is a work in progress, but suggestions welcome!
 
 # Powered By
 
