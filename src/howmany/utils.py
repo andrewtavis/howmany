@@ -33,7 +33,7 @@ for u, rs in base_unit_ratio_dict.items():
 unit_ratio_dict = base_unit_ratio_dict | inv_base_unit_ratio_dict
 
 
-def float_to_str(f: float, prec: int = 20):
+def float_to_str(f: float, precision: int = 20):
     """
     Converts a float into a long decimal string with a given precision.
 
@@ -42,7 +42,7 @@ def float_to_str(f: float, prec: int = 20):
         f : float
             The float to be converted to a long decimal string.
 
-        prec : int (default=20)
+        precision : int (default=20)
             The precision of the resulting decimal string.
 
     Returns
@@ -51,7 +51,7 @@ def float_to_str(f: float, prec: int = 20):
             The original float formatted as a long decimal string.
     """
     ctx = decimal.Context()
-    ctx.prec = prec
+    ctx.prec = precision
 
     f_string = ctx.create_decimal(repr(f))
 
@@ -76,6 +76,7 @@ def _wd_rest_api_get_request(qid: str, term: str = None):
     """
     api_endpoint = "https://www.wikidata.org/w/rest.php/wikibase/v0"
     request_string = f"{api_endpoint}/entities/items/{qid}"
+
     if term:
         request_string += f"/{term}"
 
@@ -159,6 +160,7 @@ def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
     if unit:
         try:
             value_unit = _get_ent_prop_amount_unit(qid=qid, pid=pid)
+
         except KeyError:
             try:
                 value_unit = _get_ent_prop_amount_unit(
@@ -169,6 +171,7 @@ def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
                 raise KeyError(
                     f"Wikidata doesn't have units for the needed properties of {qid}."
                 ) from e1
+
         unit_ratio = unit_ratio_dict[unit][value_unit]
 
     else:
@@ -180,6 +183,7 @@ def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
                 "content"
             ]["amount"][1:]
         )
+
     except KeyError as e2:
         if pid not in pid_dimension_resolve_dict:
             raise KeyError(error_msg) from e2

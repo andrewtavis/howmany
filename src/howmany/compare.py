@@ -2,7 +2,7 @@
 Compare
 -------
 
-Function for finding how many of an entity will fit inside a container.
+A function for finding how many of an entity will fit inside another.
 """
 
 from howmany.utils import (
@@ -56,6 +56,7 @@ def compare(
 
     except KeyError:
         entity_units = [_get_ent_prop_amount_unit(qid=e, pid=pid) for e in entities]
+
         container_amounts = [
             _get_ent_prop_amount(qid=c, pid=pid, unit=entity_units[i])
             for i, c in enumerate(containers)
