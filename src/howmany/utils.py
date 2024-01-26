@@ -106,7 +106,7 @@ def _get_ent_label(qid: str, iso: str = "en"):
 
     except KeyError as e:
         raise KeyError(
-            f"The qid {qid} does't have a label with the iso key {iso}."
+            f"The QID {qid} does't have a label with the ISO code {iso}."
         ) from e
 
 
