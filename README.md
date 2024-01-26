@@ -123,7 +123,7 @@ germanies_in_soccer_fields_dict = howmany.compare(
 )
 
 for k in germanies_in_soccer_fields_dict.keys():
-    amount = float_to_str(germanies_in_soccer_fields_dict[k]["amount"])
+    amount = float_to_str(f=germanies_in_soccer_fields_dict[k]["amount"])
     print(
         f"You could fit {amount} {germanies_in_soccer_fields_dict[k]['entity']}s inside an {k}."
     )
