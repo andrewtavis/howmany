@@ -8,9 +8,9 @@ Contents
 --------
     float_to_str,
     _wd_rest_api_get_request,
-    _get_ent_label,
-    _get_ent_prop_amount_unit,
-    _get_ent_prop_amount
+    get_wd_ent_label,
+    get_wd_ent_prop_amount_unit,
+    get_wd_ent_prop_amount
 """
 
 
@@ -85,7 +85,7 @@ def _wd_rest_api_get_request(qid: str, term: str = None):
     return request.json()
 
 
-def _get_ent_label(qid: str, iso: str = "en"):
+def get_wd_ent_label(qid: str, iso: str = "en"):
     """
     Find the English label for the given Wikidata entity data.
 
@@ -110,7 +110,7 @@ def _get_ent_label(qid: str, iso: str = "en"):
         ) from e
 
 
-def _get_ent_prop_amount_unit(qid: str, pid: str):
+def get_wd_ent_prop_amount_unit(qid: str, pid: str):
     """
     Find the value unit for the given Wikidata entity data.
 
@@ -126,7 +126,7 @@ def _get_ent_prop_amount_unit(qid: str, pid: str):
     -------
         The unit for the given Wikidata QID data and property identifier.
     """
-    return _get_ent_label(
+    return get_wd_ent_label(
         qid=_wd_rest_api_get_request(qid=qid, term="statements")[pid][0]["value"][
             "content"
         ]["unit"].split("http://www.wikidata.org/entity/")[1],
@@ -134,7 +134,7 @@ def _get_ent_prop_amount_unit(qid: str, pid: str):
     )
 
 
-def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
+def get_wd_ent_prop_amount(qid: str, pid: str, unit: str = None):
     """
     Find the value amount for the given Wikidata entity data.
 
@@ -159,11 +159,11 @@ def _get_ent_prop_amount(qid: str, pid: str, unit: str = None):
 
     if unit:
         try:
-            value_unit = _get_ent_prop_amount_unit(qid=qid, pid=pid)
+            value_unit = get_wd_ent_prop_amount_unit(qid=qid, pid=pid)
 
         except KeyError:
             try:
-                value_unit = _get_ent_prop_amount_unit(
+                value_unit = get_wd_ent_prop_amount_unit(
                     qid=qid, pid=pid_dimension_resolve_dict[pid][0]
                 )
 

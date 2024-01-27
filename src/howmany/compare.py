@@ -6,9 +6,9 @@ A function for finding how many of an entity will fit inside another.
 """
 
 from howmany.utils import (
-    _get_ent_label,
-    _get_ent_prop_amount,
-    _get_ent_prop_amount_unit,
+    get_wd_ent_label,
+    get_wd_ent_prop_amount,
+    get_wd_ent_prop_amount_unit,
 )
 
 
@@ -45,26 +45,26 @@ def compare(
 
     try:
         container_units = [
-            _get_ent_prop_amount_unit(qid=c, pid=pid) for c in containers
+            get_wd_ent_prop_amount_unit(qid=c, pid=pid) for c in containers
         ]
 
-        container_amounts = [_get_ent_prop_amount(qid=c, pid=pid) for c in containers]
+        container_amounts = [get_wd_ent_prop_amount(qid=c, pid=pid) for c in containers]
         entity_amounts = [
-            _get_ent_prop_amount(qid=e, pid=pid, unit=container_units[i])
+            get_wd_ent_prop_amount(qid=e, pid=pid, unit=container_units[i])
             for i, e in enumerate(entities)
         ]
 
     except KeyError:
-        entity_units = [_get_ent_prop_amount_unit(qid=e, pid=pid) for e in entities]
+        entity_units = [get_wd_ent_prop_amount_unit(qid=e, pid=pid) for e in entities]
 
         container_amounts = [
-            _get_ent_prop_amount(qid=c, pid=pid, unit=entity_units[i])
+            get_wd_ent_prop_amount(qid=c, pid=pid, unit=entity_units[i])
             for i, c in enumerate(containers)
         ]
-        entity_amounts = [_get_ent_prop_amount(qid=e, pid=pid) for e in entities]
+        entity_amounts = [get_wd_ent_prop_amount(qid=e, pid=pid) for e in entities]
 
-    container_labels = [_get_ent_label(qid=c, iso=iso) for c in containers]
-    entity_labels = [_get_ent_label(qid=e, iso=iso) for e in entities]
+    container_labels = [get_wd_ent_label(qid=c, iso=iso) for c in containers]
+    entity_labels = [get_wd_ent_label(qid=e, iso=iso) for e in entities]
 
     ratios_dict = {}
     for c, c_lbl in enumerate(container_labels):
