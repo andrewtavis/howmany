@@ -98,16 +98,37 @@ git remote add upstream https://github.com/andrewtavis/howmany.git
 
 # Examples [`⇧`](#contents)
 
-See the [examples directory](https://github.com/andrewtavis/howmany/tree/main/examples) for example Jupyter notebooks.
-
-A basic howmany workflow is:
+See the [example Jupyter notebook](https://github.com/andrewtavis/howmany/tree/main/examples/howmany_examples.ipynb) for full examples.
 
 ```py
+# Imports for examples.
 import howmany
-from howmany.utils import float_to_str
+from howmany.utils import (
+    float_to_str,
+    get_wd_ent_label,
+    get_wd_ent_prop_amount,
+    get_wd_ent_prop_amount_unit,
+)
+```
 
+### Getting labels, amounts and units
+
+```py
+eiffel_tower_label = get_wd_ent_label(qid="Q243")
+eiffel_tower_height = get_wd_ent_prop_amount(qid="Q243", pid="P2048")
+eiffel_tower_height_unit = get_wd_ent_prop_amount_unit(qid="Q243", pid="P2048")
+
+print(
+    f"The {eiffel_tower_label} is {round(eiffel_tower_height)} {eiffel_tower_height_unit}s tall."
+)
+# The Eiffel Tower is 324 metres tall.
+```
+
+### Simple comparisons of Wikidata items
+
+```py
 soccer_fields_in_germany_dict = howmany.compare(
-    containers="Q183", entities="Q8524", pid="P2046", iso="en"
+    containers="Q183", entities="Q8524", pid="P2046"
 )
 
 for k in soccer_fields_in_germany_dict.keys():
@@ -119,7 +140,7 @@ for k in soccer_fields_in_germany_dict.keys():
 # You could fit 50,453,300.88 association football pitches inside Germany.
 
 germanies_in_soccer_fields_dict = howmany.compare(
-    containers="Q8524", entities="Q183", pid="P2046", iso="en"
+    containers="Q8524", entities="Q183", pid="P2046"
 )
 
 for k in germanies_in_soccer_fields_dict.keys():
@@ -128,8 +149,65 @@ for k in germanies_in_soccer_fields_dict.keys():
         f"You could fit {amount} {germanies_in_soccer_fields_dict[k]['entity']}s inside an {k}."
     )
 
-# You could fit 0.000000019820308731475912 Germanys inside an association football pitch.
+# You could fit 0.0000000198 Germanys inside an association football pitch.
 ```
+
+### Comparisons of Wikidata items with predefined amounts
+
+```py
+large_new_wind_farm_label = "large new wind farm"
+area_of_large_new_wind_farm = 50
+unit_of_large_new_wind_farm_area = "square kilometre"
+
+soccer_fields_in_large_new_wind_farm_dict = howmany.compare(
+    containers=large_new_wind_farm_label,
+    container_amounts=area_of_large_new_wind_farm,
+    container_units=unit_of_large_new_wind_farm_area,
+    entities="Q8524",
+    pid="P2046",
+)
+
+for k in soccer_fields_in_large_new_wind_farm_dict.keys():
+    amount = round(soccer_fields_in_large_new_wind_farm_dict[k]["amount"], 2)
+    print(
+        f"You could fit {amount:,} {soccer_fields_in_large_new_wind_farm_dict[k]['entity']}es inside the {k}."
+    )
+
+# You could fit 7,054.67 association football pitches inside the large new wind farm.
+```
+
+### Comparisons across lists of containers or entities
+
+```py
+all_german_state_qids = ["Q64", ...]
+saarland_qid = "Q1201"
+
+saarlands_in_german_states_dict = howmany.compare(
+    containers=all_german_state_qids, entities=saarland_qid, pid="P2046"  # , iso="en"
+)
+
+# Code to order labels and area ratios...
+
+ax = sns.barplot(
+    x=german_states_desc_saarland_area, y=german_state_desc_areas_in_saarlands
+)
+ax.set_title("Area of German States in Saarlands", size=18)
+ax.set(xlabel="German State", ylabel="Area (Saarlands)")
+ax.bar_label(ax.containers[0])
+ax.xaxis.label.set_size(14)
+ax.yaxis.label.set_size(14)
+plt.xticks(rotation=45)
+
+plt.savefig(
+    "output_images/bar_german_states_by_saarland_area.png", dpi=150, bbox_inches="tight"
+)
+
+plt.show()
+```
+
+<div align="center">
+  <a href="https://github.com/andrewtavis/howmany/examples/output_images/bar_german_states_by_saarland_area.png"><img src="https://raw.githubusercontent.com/andrewtavis/howmany/main/examples/output_images/bar_german_states_by_saarland_area.png" width=618 height=335></a>
+</div>
 
 <a id="to-do"></a>
 

@@ -6,6 +6,13 @@ howmany tries to follow [semantic versioning](https://semver.org/), a MAJOR.MINO
 - MINOR version when we add functionality in a backwards compatible manner
 - PATCH version when we make backwards compatible bug fixes
 
+# howmany 0.2.0
+
+- The user can now pass predefined amounts, labels and units to `howmany.compare()`.
+- Default values were removed from `howmany.compare()`.
+- The example Jupyter notebook and examples in the readme were expanded to show v0.2.0 functionality.
+- Minor bugs were fixed for unit conversions and checking whether units are `None`.
+
 # howmany 0.1.0
 
 - The main function `howmany.compare()` has Wikidata QIDs and properties passed to it and returns a dictionary of labels and the ratio between the property values.

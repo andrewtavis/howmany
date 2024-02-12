@@ -21,7 +21,9 @@ import requests
 
 pid_dimension_resolve_dict = {"P2046": ["P2043", "P2049"]}
 
-base_unit_ratio_dict = {"square kilometre": {"metre": 1000, "centimetre": 100000}}
+base_unit_ratio_dict = {
+    "square kilometre": {"metre": 1000, "centimetre": 100000}
+}
 
 inv_base_unit_ratio_dict = {}
 for u, rs in base_unit_ratio_dict.items():
@@ -157,7 +159,7 @@ def get_wd_ent_prop_amount(qid: str, pid: str, unit: str = None):
         f"The PID '{pid}' doesn't exist on the QID '{qid}' and cannot be resolved."
     )
 
-    if unit:
+    if unit is not None:
         try:
             value_unit = get_wd_ent_prop_amount_unit(qid=qid, pid=pid)
 
@@ -172,7 +174,7 @@ def get_wd_ent_prop_amount(qid: str, pid: str, unit: str = None):
                     f"Wikidata doesn't have units for the needed properties of '{qid}'."
                 ) from e1
 
-        unit_ratio = unit_ratio_dict[unit][value_unit]
+        unit_ratio = 1 if unit == value_unit else unit_ratio_dict[unit][value_unit]
 
     else:
         unit_ratio = 1
