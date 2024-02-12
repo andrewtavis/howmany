@@ -206,7 +206,7 @@ plt.show()
 ```
 
 <div align="center">
-  <a href="https://github.com/andrewtavis/howmany/examples/output_images/bar_german_states_by_saarland_area.png"><img src="https://raw.githubusercontent.com/andrewtavis/howmany/main/examples/output_images/bar_german_states_by_saarland_area.png" width=618 height=335></a>
+  <a href="https://raw.githubusercontent.com/andrewtavis/howmany/main/examples/output_images/bar_german_states_by_saarland_area.png"><img src="https://raw.githubusercontent.com/andrewtavis/howmany/main/examples/output_images/bar_german_states_by_saarland_area.png" width=618 height=335></a>
 </div>
 
 <a id="to-do"></a>
