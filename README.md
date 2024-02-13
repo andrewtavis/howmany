@@ -16,7 +16,7 @@
 **howmany** is a Python package that leverages the [Wikidata](https://www.wikidata.org/) [REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) to easily find and compare the dimensions of any object. You can use howmany to find the answers to questions including:
 
 - How tall is the [Eiffel Tower](https://www.wikidata.org/wiki/Q243)?
-- How many [association football pitches](https://www.wikidata.org/wiki/Q8524) would fit inside [Germany](https://www.wikidata.org/wiki/Q183) (or that new giant wind farm)?
+- How many [association football pitches](https://www.wikidata.org/wiki/Q8524) would fit inside [Germany](https://www.wikidata.org/wiki/Q183) (or that giant new wind farm)?
 - And eventually anything else that [Wikidata](https://www.wikidata.org/) has dimensions for!
 
 Of note is also that howmany can do unit conversions for users in comparison calculations.
@@ -106,7 +106,7 @@ from howmany.utils import (
     float_to_str,
     get_wd_ent_label,
     get_wd_ent_prop_amount,
-    get_wd_ent_prop_amount_unit,
+    get_wd_ent_prop_unit,
 )
 ```
 
@@ -118,7 +118,7 @@ height_pid = "P2048"
 
 eiffel_tower_label = get_wd_ent_label(qid=eiffel_tower_qid)
 eiffel_tower_height = get_wd_ent_prop_amount(qid=eiffel_tower_qid, pid=height_pid)
-eiffel_tower_height_unit = get_wd_ent_prop_amount_unit(qid=eiffel_tower_qid, pid=height_pid)
+eiffel_tower_height_unit = get_wd_ent_prop_unit(qid=eiffel_tower_qid, pid=height_pid)
 
 print(
     f"The {eiffel_tower_label} is {round(eiffel_tower_height)} {eiffel_tower_height_unit}s tall."

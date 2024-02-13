@@ -6,6 +6,11 @@ howmany tries to follow [semantic versioning](https://semver.org/), a MAJOR.MINO
 - MINOR version when we add functionality in a backwards compatible manner
 - PATCH version when we make backwards compatible bug fixes
 
+# howmany 0.2.1
+
+- Updated the name of the unit function to make it more succinct.
+- Updated documentation to be more succinct and understandable.
+
 # howmany 0.2.0
 
 - The user can now pass predefined amounts, labels and units to `howmany.compare()`.

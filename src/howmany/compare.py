@@ -8,7 +8,7 @@ A function for finding how many of an entity will fit inside another.
 from howmany.utils import (
     get_wd_ent_label,
     get_wd_ent_prop_amount,
-    get_wd_ent_prop_amount_unit,
+    get_wd_ent_prop_unit,
 )
 
 
@@ -102,7 +102,7 @@ def compare(
     else:
         try:
             container_units = [
-                get_wd_ent_prop_amount_unit(qid=c, pid=pid) for c in containers
+                get_wd_ent_prop_unit(qid=c, pid=pid) for c in containers
             ]
 
             container_amounts = [get_wd_ent_prop_amount(qid=c, pid=pid) for c in containers]
@@ -112,7 +112,7 @@ def compare(
             ]
 
         except KeyError:
-            entity_units = [get_wd_ent_prop_amount_unit(qid=e, pid=pid) for e in entities]
+            entity_units = [get_wd_ent_prop_unit(qid=e, pid=pid) for e in entities]
 
             container_amounts = [
                 get_wd_ent_prop_amount(qid=c, pid=pid, unit=entity_units[i])

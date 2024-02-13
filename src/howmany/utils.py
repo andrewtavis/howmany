@@ -9,7 +9,7 @@ Contents
     float_to_str,
     _wd_rest_api_get_request,
     get_wd_ent_label,
-    get_wd_ent_prop_amount_unit,
+    get_wd_ent_prop_unit,
     get_wd_ent_prop_amount
 """
 
@@ -112,7 +112,7 @@ def get_wd_ent_label(qid: str, iso: str = "en"):
         ) from e
 
 
-def get_wd_ent_prop_amount_unit(qid: str, pid: str):
+def get_wd_ent_prop_unit(qid: str, pid: str):
     """
     Find the value unit for the given Wikidata entity data.
 
@@ -161,11 +161,11 @@ def get_wd_ent_prop_amount(qid: str, pid: str, unit: str = None):
 
     if unit is not None:
         try:
-            value_unit = get_wd_ent_prop_amount_unit(qid=qid, pid=pid)
+            value_unit = get_wd_ent_prop_unit(qid=qid, pid=pid)
 
         except KeyError:
             try:
-                value_unit = get_wd_ent_prop_amount_unit(
+                value_unit = get_wd_ent_prop_unit(
                     qid=qid, pid=pid_dimension_resolve_dict[pid][0]
                 )
 
