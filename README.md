@@ -186,11 +186,15 @@ for k in soccer_fields_in_giant_new_wind_farm_dict.keys():
 ### Comparisons across lists of containers or entities
 
 ```py
+# Variables defined above...
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 all_german_state_qids = ["Q64", ...]
 saarland_qid = "Q1201"
 
 saarlands_in_german_states_dict = howmany.compare(
-    containers=all_german_state_qids, entities=saarland_qid, pid="P2046"  # , iso="en"
+    containers=all_german_state_qids, entities=saarland_qid, pid=area_pid  # , iso="en"
 )
 
 # Code to order labels and area ratios...
@@ -218,7 +222,9 @@ plt.show()
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/howmany/blob/main/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
-- Work to be done is a work in progress, but suggestions welcome!
+- Expand the unit conversion process in [utils.py](https://github.com/andrewtavis/howmany/blob/main/src/howmany/utils.py)
+- Keep requests below the [Wikidata REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) rate limit in `howmany.compare()`
+- Other suggestions welcome!
 
 # Powered By
 
