@@ -13,13 +13,13 @@
 
 ## Wikidata powered comparisons
 
-**howmany** is a Python package that uses [Wikidata](https://www.wikidata.org/) entity properties to easily compare the dimensions of any object. The package leverages the [Wikidata REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) to easily derive amount values and then compare them given unit ratios.
+**howmany** is a Python package that leverages the [Wikidata](https://www.wikidata.org/) [REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) to easily find and compare the dimensions of any object. You can use howmany to find the answers to questions including:
 
-You can use howmany to find the answers to questions including:
-
-- How many association football pitches would fit inside Germany?
-- How many Germanys would fit inside an association football pitch?
+- How tall is the [Eiffel Tower](https://www.wikidata.org/wiki/Q243)?
+- How many [association football pitches](https://www.wikidata.org/wiki/Q8524) would fit inside [Germany](https://www.wikidata.org/wiki/Q183) (or that new giant wind farm)?
 - And eventually anything else that [Wikidata](https://www.wikidata.org/) has dimensions for!
+
+Of note is also that howmany can do unit conversions for users in comparison calculations.
 
 <a id="contents"></a>
 
@@ -101,7 +101,6 @@ git remote add upstream https://github.com/andrewtavis/howmany.git
 See the [example Jupyter notebook](https://github.com/andrewtavis/howmany/tree/main/examples/howmany_examples.ipynb) for full examples.
 
 ```py
-# Imports for examples.
 import howmany
 from howmany.utils import (
     float_to_str,
@@ -114,9 +113,12 @@ from howmany.utils import (
 ### Getting labels, amounts and units
 
 ```py
-eiffel_tower_label = get_wd_ent_label(qid="Q243")
-eiffel_tower_height = get_wd_ent_prop_amount(qid="Q243", pid="P2048")
-eiffel_tower_height_unit = get_wd_ent_prop_amount_unit(qid="Q243", pid="P2048")
+eiffel_tower_qid = "Q243"
+height_pid = "P2048"
+
+eiffel_tower_label = get_wd_ent_label(qid=eiffel_tower_qid)
+eiffel_tower_height = get_wd_ent_prop_amount(qid=eiffel_tower_qid, pid=height_pid)
+eiffel_tower_height_unit = get_wd_ent_prop_amount_unit(qid=eiffel_tower_qid, pid=height_pid)
 
 print(
     f"The {eiffel_tower_label} is {round(eiffel_tower_height)} {eiffel_tower_height_unit}s tall."
@@ -127,8 +129,12 @@ print(
 ### Simple comparisons of Wikidata items
 
 ```py
+germany_qid = "Q183"
+soccer_field_qid = "Q8524"
+area_pid = "P2046"
+
 soccer_fields_in_germany_dict = howmany.compare(
-    containers="Q183", entities="Q8524", pid="P2046"
+    containers=germany_qid, entities=soccer_field_qid, pid=area_pid
 )
 
 for k in soccer_fields_in_germany_dict.keys():
@@ -140,7 +146,7 @@ for k in soccer_fields_in_germany_dict.keys():
 # You could fit 50,453,300.88 association football pitches inside Germany.
 
 germanies_in_soccer_fields_dict = howmany.compare(
-    containers="Q8524", entities="Q183", pid="P2046"
+    containers=soccer_field_qid, entities=germany_qid, pid=area_pid
 )
 
 for k in germanies_in_soccer_fields_dict.keys():
@@ -155,25 +161,26 @@ for k in germanies_in_soccer_fields_dict.keys():
 ### Comparisons of Wikidata items with predefined amounts
 
 ```py
-large_new_wind_farm_label = "large new wind farm"
-area_of_large_new_wind_farm = 50
-unit_of_large_new_wind_farm_area = "square kilometre"
+# Variables defined above...
+giant_new_wind_farm_label = "giant new wind farm"
+area_of_giant_new_wind_farm = 50
+unit_of_giant_new_wind_farm_area = "square kilometre"
 
-soccer_fields_in_large_new_wind_farm_dict = howmany.compare(
-    containers=large_new_wind_farm_label,
-    container_amounts=area_of_large_new_wind_farm,
-    container_units=unit_of_large_new_wind_farm_area,
-    entities="Q8524",
-    pid="P2046",
+soccer_fields_in_giant_new_wind_farm_dict = howmany.compare(
+    containers=giant_new_wind_farm_label,
+    container_amounts=area_of_giant_new_wind_farm,
+    container_units=unit_of_giant_new_wind_farm_area,
+    entities=soccer_field_qid,
+    pid=area_pid,
 )
 
-for k in soccer_fields_in_large_new_wind_farm_dict.keys():
-    amount = round(soccer_fields_in_large_new_wind_farm_dict[k]["amount"], 2)
+for k in soccer_fields_in_giant_new_wind_farm_dict.keys():
+    amount = round(soccer_fields_in_giant_new_wind_farm_dict[k]["amount"], 2)
     print(
-        f"You could fit {amount:,} {soccer_fields_in_large_new_wind_farm_dict[k]['entity']}es inside the {k}."
+        f"You could fit {amount:,} {soccer_fields_in_giant_new_wind_farm_dict[k]['entity']}es inside the {k}."
     )
 
-# You could fit 7,054.67 association football pitches inside the large new wind farm.
+# You could fit 7,054.67 association football pitches inside the giant new wind farm.
 ```
 
 ### Comparisons across lists of containers or entities
@@ -197,10 +204,6 @@ ax.bar_label(ax.containers[0])
 ax.xaxis.label.set_size(14)
 ax.yaxis.label.set_size(14)
 plt.xticks(rotation=45)
-
-plt.savefig(
-    "output_images/bar_german_states_by_saarland_area.png", dpi=150, bbox_inches="tight"
-)
 
 plt.show()
 ```
