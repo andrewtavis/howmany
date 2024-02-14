@@ -19,7 +19,7 @@
 - How many [association football pitches](https://www.wikidata.org/wiki/Q8524) would fit inside [Germany](https://www.wikidata.org/wiki/Q183) (or that giant new wind farm)?
 - And eventually anything else that [Wikidata](https://www.wikidata.org/) has dimensions for!
 
-Of note is also that howmany can do unit conversions for users in comparison calculations.
+Of note is that howmany can also do unit (ex: m <-> km) and dimension (ex: area <-> length x width) conversions during comparison calculations.
 
 <a id="contents"></a>
 
