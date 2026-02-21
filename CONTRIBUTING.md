@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 # Contributing to howmany
 
 Thank you for your consideration in contributing to this project!
@@ -15,15 +17,13 @@ Following these guidelines helps to communicate that you respect the time of the
 - [Feature requests](#feature-requests)
 - [Pull requests](#pull-requests)
 
-<a name="using-issue-tracker"></a>
-
-## Using the issue tracker [`⇧`](#contents)
+## Using the issue tracker
 
 The [issue tracker for howmany](https://github.com/andrewtavis/howmany/issues) is the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests) and [submitting pull requests](#pull-requests).
 
-<a name="bug-reports"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-## Bug reports [`⇧`](#contents)
+## Bug reports
 
 A bug is a _demonstrable problem_ that is caused by the code in the repository. Good bug reports are extremely helpful - thank you!
 
@@ -45,15 +45,15 @@ Guidelines for bug reports:
 
 Again, thank you for your time in reporting issues!
 
-<a name="feature-requests"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-## Feature requests [`⇧`](#contents)
+## Feature requests
 
 Feature requests are more than welcome! Please take a moment to find out whether your idea fits with the scope and aims of the project. When making a suggestion, provide as much detail and context as possible, and further make clear the degree to which you would like to contribute in its development.
 
-<a name="pull-requests"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-## Pull requests [`⇧`](#contents)
+## Pull requests
 
 Good pull requests - patches, improvements and new features - are a fantastic help. They should remain focused in scope and avoid containing unrelated commits. Note that all contributions to this project will be made under [the specified license](https://github.com/andrewtavis/howmany/blob/main/LICENSE.txt) and should follow the coding indentation and style standards (contact us if unsure).
 
@@ -97,3 +97,5 @@ When making a contribution, adhering to the [GitHub flow](https://guides.github.
 6. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/) with a clear title and description.
 
 Thank you in advance for your contributions!
+
+<sub><a href="#top">Back to top.</a></sub>

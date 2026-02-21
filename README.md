@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <div align="center">
   <a href="https://github.com/andrewtavis/howmany"><img src="https://raw.githubusercontent.com/andrewtavis/howmany/main/.github/resources/logo/howmany_logo_transparent.png" width=545 height=150></a>
 </div>
@@ -11,7 +13,7 @@
 [![coc](https://img.shields.io/badge/coc-Contributor%20Covenant-ff69b4.svg)](https://github.com/andrewtavis/howmany/blob/main/.github/CODE_OF_CONDUCT.md)
 [![codestyle](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-## Wikidata powered comparisons
+### Wikidata powered comparisons
 
 **howmany** is a Python package that leverages the [Wikidata](https://www.wikidata.org/) [REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) to easily find and compare the dimensions of any object. You can use howmany to find the answers to questions including:
 
@@ -21,18 +23,14 @@
 
 Of note is that howmany can also do unit (ex: m <-> km) and dimension (ex: area <-> length x width) conversions during comparison calculations.
 
-<a id="contents"></a>
-
-# **Contents**
+## Contents
 
 - [Installation](#installation)
 - [Environment Setup](#environment-setup)
 - [Examples](#examples)
 - [To-Do](#to-do)
 
-<a id="installation"></a>
-
-# Installation [`⇧`](#contents)
+# Installation
 
 howmany can be downloaded from PyPI via pip or sourced directly from this repository:
 
@@ -50,9 +48,9 @@ python setup.py install
 import howmany
 ```
 
-<a id="environment-setup"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# Environment Setup [`⇧`](#contents)
+# Environment Setup
 
 The development environment for howmany can be installed via the following steps:
 
@@ -94,9 +92,9 @@ git remote add upstream https://github.com/andrewtavis/howmany.git
    conda env create -f environment.yml
    ```
 
-<a id="examples"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# Examples [`⇧`](#contents)
+# Examples
 
 See the [example Jupyter notebook](https://github.com/andrewtavis/howmany/tree/main/examples/howmany_examples.ipynb) for full examples.
 
@@ -216,15 +214,17 @@ plt.show()
   <a href="https://raw.githubusercontent.com/andrewtavis/howmany/main/examples/output_images/bar_german_states_by_saarland_area.png"><img src="https://raw.githubusercontent.com/andrewtavis/howmany/main/examples/output_images/bar_german_states_by_saarland_area.png" width=618 height=335></a>
 </div>
 
-<a id="to-do"></a>
+<sub><a href="#top">Back to top.</a></sub>
 
-# To-Do [`⇧`](#contents)
+# To-Do
 
 Please see the [contribution guidelines](https://github.com/andrewtavis/howmany/blob/main/CONTRIBUTING.md) if you are interested in contributing to this project. Work that is in progress or could be implemented includes:
 
 - Expand the unit conversion process in [utils.py](https://github.com/andrewtavis/howmany/blob/main/src/howmany/utils.py)
 - Keep requests below the [Wikidata REST API](https://www.wikidata.org/wiki/Wikidata:REST_API) rate limit in `howmany.compare()`
 - Other suggestions welcome!
+
+<sub><a href="#top">Back to top.</a></sub>
 
 # Powered By
 
@@ -233,3 +233,5 @@ Please see the [contribution guidelines](https://github.com/andrewtavis/howmany/
   <a href="https://www.wikidata.org/"><img height="175" src="https://raw.githubusercontent.com/andrewtavis/howmany/main/.github/resources/images/wikidata_logo.png" alt="Wikidata"></a>
   <br>
 </div>
+
+<sub><a href="#top">Back to top.</a></sub>
